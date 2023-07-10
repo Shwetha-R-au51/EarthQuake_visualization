@@ -34,13 +34,12 @@ app.get("/earthquakedata",async(req,res)=>{
         coordinates: [earthquake.Longitude, earthquake.Latitude],
       }))
     },
-  
-},
+    },
     }
     res.status(200).json({
         statusCode:200,
         data: geojsonData,
-      });
+    });
 } catch (error) {
   console.error('Error fetching data:', error);
   res.status(500).json({ error: 'Internal Server Error' });
@@ -60,7 +59,7 @@ const dataCount = await Earthquake.countDocuments();
     // Data not found, scrape and store the data
     ScrapeDataintoDB();
   } else {
-    console.log('Data already exists in the database. Skipping scraping.');
+    console.log('Data already exists in the database. Skipping scrape data function.');
   }
 // Start the server
 var PORT = 3000;
